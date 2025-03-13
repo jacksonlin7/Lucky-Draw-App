@@ -304,6 +304,9 @@
                 if (Number.parseInt(max_number_elem.value) < 2) {
                     max_number_elem.value = 2
                 }
+                if (Number.parseInt(max_number_elem.value) > 9999) {
+                    max_number_elem.value = 9999
+                }
             })
 
             let lucky_nums = []
