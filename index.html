@@ -12,7 +12,7 @@
                 background-image: linear-gradient(45deg, rgb(0, 60, 255), rgb(39, 107, 253));
                 font-family: Helvetica;
                 min-height: 98vh;
-                --settings-height: 190px;
+                --settings-height: 200px;
             }
 
             div.app {
@@ -65,14 +65,9 @@
                 display: flex;
                 align-items: center;
                 gap: 15px;
-                flex-wrap: wrap;
             }
 
-            div#settings > div.duplicates > label {
-                flex-shrink: 0;
-            }
-
-            div#settings > div.duplicates > span {
+            div#settings > span#num-dup-warning {
                 font-size: 14px;
                 color: red;
                 display: none;
@@ -241,8 +236,8 @@
                 <div class="duplicates">
                     <input id="num-dup" type="checkbox">
                     <label for="num-dup">Numbers Duplicates</label>
-                    <span id="num-dup-warning">*This option cannot be set when you start drawing</span>
                 </div>
+                <span id="num-dup-warning">*These options cannot be set when you start drawing</span>
             </div>
 
             <div id="draw-display">
@@ -263,7 +258,7 @@
             let min_number_elem = document.getElementById("num-min")
             let max_number_elem = document.getElementById("num-max")
             let num_dup_elem = document.getElementById("num-dup")
-            let num_dup_elem_warning = document.getElementById("num-dup-warning")
+            let settings_warning_elem = document.getElementById("num-dup-warning")
             let num_display = document.getElementById("num-display")
             let draw_btn = document.getElementById("draw-btn")
             let reset_btn = document.getElementById("reset-btn")
@@ -338,7 +333,9 @@
                     const max_num = Number.parseInt(max_number_elem.value)
 
                     num_dup_elem.setAttribute("disabled", 1)
-                    num_dup_elem_warning.style.display = "block"
+                    min_number_elem.setAttribute("disabled", 1)
+                    max_number_elem.setAttribute("disabled", 1)
+                    settings_warning_elem.style.display = "block"
 
                     is_drawing =  true
                     for (let i = 0; i < 20; i++) {
@@ -380,7 +377,9 @@
 
                     draw_btn.removeAttribute("disabled")
                     num_dup_elem.removeAttribute("disabled")
-                    num_dup_elem_warning.style.display = "none"
+                    min_number_elem.removeAttribute("disabled")
+                    max_number_elem.removeAttribute("disabled")
+                    settings_warning_elem.style.display = "none"
                 }
             })
         </script>
