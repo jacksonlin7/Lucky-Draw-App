@@ -315,7 +315,7 @@
                 const min_num = Number.parseInt(min_number_elem.value)
                 const max_num = Number.parseInt(max_number_elem.value)
 
-                let lucky_num = Math.floor(Math.random() * (Math.floor(max_num) - Math.ceil(min_num)) + Math.ceil(min_num));
+                let lucky_num = Math.floor(Math.random() * (Math.floor(max_num) - Math.ceil(min_num) + 1) + Math.ceil(min_num));
                 num_display.innerHTML = lucky_num
 
                 return lucky_num
